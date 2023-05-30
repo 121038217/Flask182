@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: arial;
+}
+
+.form-consulpacientes{
+    width: 1400px;
+    background: #4e4d4d;
+    padding: 10px 20px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 1px;
+    font-family:'calibri';
+    color: white;
+
+
+}
+
+.form-consulpacientes h1{
+    text-align: center;
+    position: 0;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.controls1{
+    display: flex;
+    justify-content: auto;
+    width:400px;
+    background: #ffffff;
+    border: 15px;
+    padding: 10px;
+    color: #000;
+    margin: 50px auto;
+    font-family: 'Calibri';
+    text-align: center;
+    font-size:16px;
+}
+
+.controls2{
+    display: flex;
+    justify-content: center;
+    width:150px;
+    background: #ffffff;
+    border: 15px;
+    padding: 10px;
+    color: #000;
+    margin: 15px auto;
+    font-family: 'Calibri';
+    text-align: center;
+    font-size:16px;
+}
+
+.controls{
+    background: #ffffff;
+    border: 0px;
+    padding: 10px;
+    color: #000;
+    margin-right: 20px;
+    font-family: 'Calibri';
+    text-align: center;
+}
+
+.form-consulpacientes .botons{
+    display: flex;
+    justify-content: center;
+    width:250px;
+    background: #1f53c5;
+    border: none;
+    padding: 20px;
+    color:white;
+    margin: 50px auto;
+    font-size:16px;
+}

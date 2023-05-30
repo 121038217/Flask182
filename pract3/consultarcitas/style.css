@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: arial;
+}
+
+.form-consultarcitas{
+    width: 1350px;
+    background: #4e4d4d;
+    padding: 20px 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 1px;
+    font-family:'calibri';
+    color: white;
+
+
+}
+
+.form-consultarcitas h1{
+    text-align: center;
+    position: 0;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.controls1{
+    display: flex;
+    justify-content: auto;
+    width:400px;
+    background: #ffffff;
+    border: 15px;
+    padding: 10px;
+    color: #000;
+    margin: 50px auto;
+    font-family: 'Calibri';
+    text-align: center;
+    font-size:16px;
+}
+
+.controls{
+    background: #ffffff;
+    border: 0px;
+    padding: 10px;
+    color: #000;
+    margin-right: 20px;
+    font-family: 'Calibri';
+    text-align: center;
+}
+
+.controls2{
+    display: flex;
+    justify-content: auto;
+    width:200px;
+    background: #ffffff;
+    border: 15px;
+    padding: 10px;
+    color: #000;
+    margin: 50px auto;
+    font-family: 'Calibri';
+    text-align: center;
+    font-size:16px;
+}
+
+.form-consultarcitas .botons1{
+    justify-content: center;
+    width:350px;
+    background: #1f53c5;
+    border: none;
+    padding: 20px;
+    color:white;
+    margin: 100px;
+    font-size:16px;
+}
+
+.form-consultarcitas .botons2{
+    justify-content: center;
+    width:350px;
+    background: #1f53c5;
+    border: none;
+    padding: 20px;
+    color:white;
+    margin: 100px;
+    font-size:16px;
+}

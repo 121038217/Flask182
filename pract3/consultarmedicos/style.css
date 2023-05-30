@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: arial;
+}
+
+.form-consultarmedic{
+    width: 1500px;
+    background: #4e4d4d;
+    padding: 30px 40px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 5px;
+    font-family:'calibri';
+    color: white;
+
+
+}
+
+.form-consultarmedic h1{
+    text-align: center;
+    position: 0;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.controls{
+    background: #ffffff;
+    border: 0px;
+    padding: 15px;
+    color: #000;
+    margin-right: 10px;
+    font-family: 'Calibri';
+    text-align: center;
+}
+
+.form-consultarmedic .botons{
+    display: flex;
+    justify-content: center;
+    width:250px;
+    background: #1f53c5;
+    border: none;
+    padding: 20px;
+    color:white;
+    margin: auto;
+    font-size:16px;
+}
