@@ -9,7 +9,7 @@ class almacen(object): #declaro mi clase que va contener objetos
         self.historial = []
     
     def entregarinformacion(self):
-        print("ID: {} -{} {} -{} - {}".format(self.Id,self.nombre,self.precio,self.clasificacion,self.marca))
+        print("ID: {} - {} - {} - {} - {}".format(self.Id,self.nombre,self.precio,self.clasificacion,self.marca))
     
     def actualizarinformacion(self,_nombre,_precio,_clasificacion,_marca):
         self.nombre = _nombre
@@ -18,7 +18,7 @@ class almacen(object): #declaro mi clase que va contener objetos
         self.marca = _marca
         print("Informacion actualizada")
         
-    def incluirEvento(self,_nombre,_precio,_clasificacion,_marca): #creamos metodo para poder mostrar un mensaje con la modificacion
+    def incluirEvento(self,_nombre,_precio,_clasificacion,_marca): #creamos un metodo para poder mostrar un mensaje con la modificacion
         #return ejecuta la última instrucción del programa y el programa termina.
         return("Modificacion: nombre: {} - precio: {} - clasificcion: {} - marca: {} ".format(_nombre,_precio,_clasificacion,_marca))
 
@@ -33,10 +33,19 @@ def DarAlta():
     listabebidas.append(objbebida)
         
 def DarBaja():
-    print("Darde Baja bebida")
+    print("Dar de baja bebida")
     Id = int(input("Ingresar ID: "))
-    objbebida = almacen(Id)
-    listabebidas.append(objbebida)
+    found = False
+    for bebida in listabebidas:
+        if bebida.Id == Id:
+            listabebidas.remove(bebida)
+            found = True
+            break
+    if found:
+        print("Bebida con ID {} eliminada correctamente.".format(Id))
+    else:
+        print("No se encontró ninguna bebida con el ID {}.".format(Id))
+
     
 def mostrar():
     print("Lista de bebidas")
@@ -59,14 +68,26 @@ def actualizar():
 
 def PrecioPromedio():
     print("Calcular precio promedio de bebidas")
-    resultado = sum(objbebida.precio/listabebidas)
-    print("Precio promedio de bebida es: ".format(total))
-    
+    total = sum(objbebida.precio for objbebida in listabebidas)
+    cantidad_bebidas = len(listabebidas)
+    if cantidad_bebidas > 0:
+        promedio = total / cantidad_bebidas
+        print("Precio promedio de las bebidas: {}".format(promedio))
+    else:
+        print("No hay bebidas registradas.")
+        
 def BebidasMarca():
     print("Cantidad de bebidas de una marca")
+    marca = input("Ingrese la marca: ")
+    cantidad = sum(1 for objbebida in listabebidas if objbebida.marca == marca)
+    print("Cantidad de bebidas de la marca {}: {}".format(marca, cantidad))
     
 def Clasificacion():
-    print("cantidad por clasificacion")
+    print("Cantidad por clasificación")
+    clasificacion = input("Ingrese la clasificación: ")
+    cantidad = sum(1 for objbebida in listabebidas if objbebida.clasificacion == clasificacion)
+    print("Cantidad de bebidas de la clasificación {}: {}".format(clasificacion, cantidad))
+
 
 def salir():
     print("Salir del programa")
