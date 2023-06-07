@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: arial;
+}
+
+.form-DatosAlumno{
+    width: 500px;
+    background:#ffffff;
+    padding: 20px 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family:'calibri';
+    color: white;
+}
+
+.form-DatosAlumno h2{
+    background: #F3FF00;
+    text-align: center;
+    position: 0;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.table1{
+    width:250px;
+    border: none;
+    padding: 20px;
+    color:white;
+    margin: 20px 0;
+    font-size:16px;
+}
+
+
+.botons{
+    width:250px;
+    background: #1f53c5;
+    border: none;
+    padding: 20px;
+    color:white;
+    margin: 20px 0;
+    font-size:16px;
+}
