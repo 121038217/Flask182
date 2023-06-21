@@ -1,5 +1,7 @@
 
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,redirect,url_for,flash
+from flask_mysqldb import MySQL 
+#Importamos MySQL
 #request (solicitudes)
 #render_template Generar la vista al momento de abrir el proyecto
 
@@ -7,9 +9,13 @@ from flask import Flask,render_template,request
 #inicializacion del servidor Flask
 app = Flask(__name__)
 app.config['MYSQL_HOST']="localhost" #especificar el servidor en donde estamos trabajando
-app.config['MYSQL_HOST']="root" #especificar el usuario con el que vamos a trabajar
-app.config['MYSQL_HOST']="" #especificar contraseña
-app.config['MYSQL_HOST']="dbflask" #especificar a que base de datos voy a trabajar
+app.config['MYSQL_USER']="root" #especificar el usuario con el que vamos a trabajar
+app.config['MYSQL_PASSWORD']="" #especificar contraseña
+app.config['MYSQL_DB']="dbflask" #especificar a que base de datos voy a trabajar
+
+app.secret_key = 'mysecretkey'
+
+mysql = MySQL(app)
 
 #Declaracion de rutas
 
@@ -22,13 +28,21 @@ def index():
 @app.route('/guardar',methods=['POST']) 
 def guardar():
     if request.method == 'POST':
-        titulo= request.form['txtTitulo']
-        artista= request.form['txtArtista']
-        anio= request.form['txtAnio']
-        print(titulo,artista,anio)
+        
+        Vtitulo= request.form['txtTitulo']
+        Vartista= request.form['txtArtista']
+        Vanio= request.form['txtAnio']
+        #print(titulo,artista,anio)
+        
+        CS = mysql.connection.cursor() 
+        #variable tipo cursor que tiene las herramientas para ejecutar las conceciones
+        CS.execute('insert into new_table(titulo,artista,anio) values(%s,%s,%s)',(Vtitulo,Vartista,Vanio)) #en CS ejecutamos sql
+        mysql.connection.commit()
+     
+    flash('album Agregado Correctamente')   
+    return redirect(url_for('index'))
+    #guardamos al index
     
-    return "La info del Album llego a su ruta Amigo ;) "
-
 @app.route('/eliminar') 
 def eliminar():
     return "Se elimino el album en la BD"
