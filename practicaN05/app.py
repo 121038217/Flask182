@@ -48,6 +48,29 @@ def guardar():
     return redirect(url_for('index'))
     #guardamos al index
     
+@app.route('/editar/<id>')
+def editar(id):
+    curEditar= mysql.connection.cursor() #creamos una consulta
+    curEditar.execute('select * from new_table where id= %s ',(id,)) #escribimos la consulta
+    consulID=curEditar.fetchone() #para atraer un solo registro con fetchone
+    return render_template('editarAlbum.html',album=consulID)
+
+@app.route('/actualizar/<id>',methods=['POST']) 
+def actualizar(id):
+    if request.method == 'POST':
+        
+        Vtitulo= request.form['txtTitulo']
+        Vartista= request.form['txtArtista']
+        Vanio= request.form['txtAnio']
+        #print(titulo,artista,anio)
+
+        curAct=mysql.connection.cursor()
+        curAct.execute('update new_table set titulo=%s, artista=%s, anio=%s where id= %s',(Vtitulo,Vartista,Vanio,id))
+        mysql.connection.commit()
+        
+        flash('album Actualizado en BD')  #Agregamos un menaje con flash 
+        return redirect(url_for('index'))
+    
 @app.route('/eliminar') 
 def eliminar():
     return "Se elimino el album en la BD"
