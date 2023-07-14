@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+        font-family: arial;
+        background-image: url('Gris.jpg');
+    }
+
+.form-DatosAlumno{
+    width: 500px;
+    background:#ffffff;
+    padding: 20px 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family:'calibri';
+    color: white;
+}
+
+.form-DatosAlumno h2{
+    background: #F3FF00;
+    text-align: center;
+    position: 0;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.form-DatosAlumno.table{
+    margin:0;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.form-DatosAlumno tr{
+    width: 100%;
+    background: #ffffff;
+    padding: 11px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 5px slid #1f53c5;
+    font-family: 'Calibri';
+    font-size: 18px;
+} 
+
+.controls{
+    width: 100%;
+    background: #ffffff;
+    padding: 11px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 5px slid #1f53c5;
+    font-family: 'Calibri';
+    font-size: 18px;
+} 
+
+.controls1{
+    width:150px;
+    background: #ffffff;
+    border: 10px;
+    padding: 5px;
+    color: #000;
+    margin: 5px auto;
+    font-family: 'Calibri';
+    text-align: center;
+    font-size:16px;
+}
+
+.controls2{
+    width: 100%;
+    background: #ffffff;
+    padding: 11px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px slid #1f53c5;
+    font-family: 'Calibri';
+    font-size: 18px;
+}
+
+.botons{
+    width:250px;
+    background: #1f53c5;
+    border: none;
+    padding: 20px;
+    color:white;
+    margin: 20px 0;
+    font-size:16px;
+}

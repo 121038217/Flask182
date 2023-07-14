@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Actualizar Fruta</title>
+</head>
+<body>
+    
+    {%with mensajes = get_flashed_messages() %}
+        {% if mensajes%}
+        {%for msj in mensajes%}
+            <h3> {{ msj }} </h3>
+        {%endfor%}
+        {% endif %}
+    {%endwith%}
+
+    <center>
+    <br>
+    <h1> Actualizar Fruta </h1>
+    <br>
+    <br>
+    <form action="/actualizar/{{ fruta.0 }}" method ="POST">
+        <input type="text" name="txtFruta" value="{{ fruta.1 }}">
+        <input type="text" name="txtTemporada" value="{{ fruta.2 }}">
+        <input type="float" name="txtPrecio" value="{{ fruta.3 }}">
+        <input type="number" name="txtStock" value="{{ fruta.4 }}">
+
+        <button type="submit"> Actualizar </button>
+    </form>
+    </center>
+</body>

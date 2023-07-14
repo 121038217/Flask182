@@ -13,7 +13,7 @@ app.config['MYSQL_USER']="root" #especificar el usuario con el que vamos a traba
 app.config['MYSQL_PASSWORD']="" #especificar contraseña
 app.config['MYSQL_DB']="dbflask" #especificar a que base de datos voy a trabajar
 
-app.secret_key = 'mysecretkey'
+app.secret_key = 'mysecretkey' #Agregamos un token
 
 mysql = MySQL(app)
 
@@ -70,12 +70,24 @@ def actualizar(id):
         
         flash('album Actualizado en BD')  #Agregamos un menaje con flash 
         return redirect(url_for('index'))
-    
-@app.route('/eliminar') 
-def eliminar():
-    return "Se elimino el album en la BD"
 
+@app.route('/borrar/<id>')
+def borrar(id):
+    curEditar= mysql.connection.cursor() #creamos una consulta
+    curEditar.execute('select * from new_table where id= %s ',(id,)) #escribimos la consulta
+    consulID=curEditar.fetchone() #para atraer un solo registro con fetchone
+    return render_template('Eliminar.html',album=consulID)
 
+@app.route('/eliminaralb/<id>',methods=['POST']) 
+def eliminaralb(id):
+    if request.method == 'POST':
+
+        curAct=mysql.connection.cursor()
+        curAct.execute('delete from new_table where id= %s',(id))
+        mysql.connection.commit()
+        
+        flash('album Actualizado en BD')  #Agregamos un menaje con flash 
+        return redirect(url_for('index'))
 
 #Linea para ejecutar el servidor
 if __name__== '__main__':
