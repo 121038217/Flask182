@@ -83,7 +83,7 @@ def eliminar(id):
         cureli.execute('delete from tbFrutas where id= %s',(id))
         mysql.connection.commit()
         
-        flash('Fruta Actualizado en BD')  #Agregamos un menaje con flash 
+        flash('Fruta borrada en BD')  #Agregamos un menaje con flash 
         return redirect(url_for('index'))
 
 

@@ -57,4 +57,11 @@
         </tbody>
     </table>
 </body>
+{%with mensajes = get_flashed_messages() %}
+{% if mensajes%}
+{%for msj in mensajes%}
+    <h3> {{ msj }} </h3>
+{%endfor%}
+{% endif %}
+{%endwith%}
 </html>
