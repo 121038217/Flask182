@@ -28,7 +28,7 @@ def guardar():
         Vprecio=request.form['txtPrecio']
         
         curguar=mysql.connection.cursor()
-        curguar.execute('insert into tbFlores(nombre,cantidad,precio) values(%s,%s,%s)',Vnombre,Vcantidad,Vprecio)
+        curguar.execute('insert into tbFlores(nombre,cantidad,precio) values(%s,%s,%s)',(Vnombre,Vcantidad,Vprecio))
         mysql.connection.commit()
     
     flash('Flor agregada correctamente')
@@ -36,13 +36,13 @@ def guardar():
 
 @app.route('/borrar/<id>')
 def borrar(id):
-    curEditar=mysql.connection.cursos()
-    curEditar.execute('select * from tbFlores where id= %s',(id))
+    curEditar= mysql.connection.cursor()
+    curEditar.execute('select * from tbFlores where id= %s ',(id,))
     consulID=curEditar.fetchone()
     return render_template('Eliminar.html',flor=consulID)
 
 
-@app.route('/eliminar/<id>',methods=['POST'])
+@app.route('/eliminar/<id>',methods=['POST']) 
 def eliminar(id):
     if request.method == 'POST':
         
@@ -52,6 +52,11 @@ def eliminar(id):
         
         flash('Flor eliminada en DB')
         return redirect(url_for('index'))
+
+@app.route('/regresar')
+def regresar():
+    return render_template('index.html')
+    
     
 if __name__=='__main__':
     app.run(port=4000,debug=True)

@@ -8,7 +8,7 @@
     <title> Eliminar Flor</title>
 </head>
 <body>
-    
+
     {%with mensajes = get_flashed_messages() %}
         {% if mensajes%}
         {%for msj in mensajes%}
@@ -18,17 +18,18 @@
     {%endwith%}
     
     <center>
-        <br>
-        <h1> Eliminar Flor </h1>
-        <br>
-        <br>
-        <form action="/eliminar/{{ flor.0 }}" method="POST">
-            <input type="text" name="txtNombre" value="{{ flor.1}}">
-            <input type="number" name="txtCantidad" value="{{ flor.2 }}">
-            <input type="float" name="txtPrecio" value="{{ flor.3 }}">
+    <br>
+    <h1> Eliminar Flor </h1>
+    <br>
+    <br>
+    <form action="/eliminar/{{ flor.0 }}" method="POST">
+        <input type="text" name="txtNombre" value="{{ flor.1}}">
+        <input type="number" name="txtCantidad" value="{{ flor.2 }}">
+        <input type="float" name="txtPrecio" value="{{ flor.3 }}">
             
-            <button type="submit"> Eliminar </button>
-
-        </form>
+        <button type="submit"> Eliminar </button>
+    </form>
+        <a href="/regresar">Regresar </a>
+    
     </center>
 </body>
