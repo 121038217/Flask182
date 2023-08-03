@@ -1,6 +1,9 @@
 
 from flask import Flask,render_template,request,redirect,url_for,flash
 from flask_mysqldb import MySQL 
+from flask import Response
+from io import BytesIO
+from reportlab.pdfgen import canvas 
 #Importamos MySQL
 #request (solicitudes)
 #render_template Generar la vista al momento de abrir el proyecto
@@ -88,6 +91,46 @@ def eliminaralb(id):
         
         flash('album Actualizado en BD')  #Agregamos un menaje con flash 
         return redirect(url_for('index'))
+
+@app.route('/generar_pdf')
+def generar_pdf():
+    # Obtenemos la lista de álbumes de la base de datos, similar a lo que hacías en la ruta index.
+    curSelect = mysql.connection.cursor()
+    curSelect.execute('select * from new_table')
+    consulta = curSelect.fetchall()
+
+    # Creamos un objeto de BytesIO para almacenar el contenido del PDF.
+    buffer = BytesIO()
+
+    # Creamos el objeto de lienzo (canvas) para el PDF.
+    c = canvas.Canvas(buffer)
+
+    # Configuramos el tamaño de página y las posiciones iniciales.
+    width, height = 800, 600
+    x, y = 50, height - 100
+
+    # Escribimos el título de la tabla.
+    c.setFont('Helvetica-Bold', 20)
+    c.drawCentredString(width / 2, y, "Álbumes Guardados")
+    y -= 30
+
+    # Escribimos los datos de los álbumes en la tabla.
+    c.setFont('Helvetica', 12)
+    for album in consulta:
+        c.drawString(x, y, f"ID: {album[0]}, Título: {album[1]}, Artista: {album[2]}, Año: {album[3]}")
+        y -= 20
+
+    # Guardamos el lienzo (canvas) y terminamos la generación del PDF.
+    c.save()
+
+    # Obtenemos el contenido del PDF desde el objeto de BytesIO.
+    pdf_content = buffer.getvalue()
+    buffer.close()
+
+    # Creamos la respuesta con el contenido del PDF.
+    response = Response(pdf_content, content_type='application/pdf')
+    response.headers['Content-Disposition'] = 'attachment; filename=albums_guardados.pdf'
+    return response
 
 #Linea para ejecutar el servidor
 if __name__== '__main__':
