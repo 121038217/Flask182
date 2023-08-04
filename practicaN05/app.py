@@ -4,6 +4,9 @@ from flask_mysqldb import MySQL
 from flask import Response
 from io import BytesIO
 from reportlab.pdfgen import canvas 
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import Image
+
 #Importamos MySQL
 #request (solicitudes)
 #render_template Generar la vista al momento de abrir el proyecto
@@ -103,11 +106,17 @@ def generar_pdf():
     buffer = BytesIO()
 
     # Creamos el objeto de lienzo (canvas) para el PDF.
-    c = canvas.Canvas(buffer)
+    c = canvas.Canvas(buffer,pagesize=letter)
 
     # Configuramos el tamaño de página y las posiciones iniciales.
-    width, height = 800, 600
+    width, height = letter
     x, y = 50, height - 100
+    
+      # Agregamos los logos al PDF.
+    logo_path = 'path/to/logo.png'  # Reemplaza con la ruta de tu archivo de logo
+    logo_width, logo_height = 100, 100
+    c.drawImage(logo_path, x, y + 30, width=logo_width, height=logo_height)
+    c.drawImage(logo_path, width - x - logo_width, y + 30, width=logo_width, height=logo_height)
 
     # Escribimos el título de la tabla.
     c.setFont('Helvetica-Bold', 20)
