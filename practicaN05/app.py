@@ -113,10 +113,7 @@ def generar_pdf():
     x, y = 50, height - 100
     
       # Agregamos los logos al PDF.
-    logo_path = 'path/to/logo.png'  # Reemplaza con la ruta de tu archivo de logo
-    logo_width, logo_height = 100, 100
-    c.drawImage(logo_path, x, y + 30, width=logo_width, height=logo_height)
-    c.drawImage(logo_path, width - x - logo_width, y + 30, width=logo_width, height=logo_height)
+    c.drawImage('logo.jpeg', 50, h-200,width=50, height=50)
 
     # Escribimos el título de la tabla.
     c.setFont('Helvetica-Bold', 20)
